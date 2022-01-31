@@ -1,43 +1,37 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState } from "react"
+import { Button } from "./components/Button"
+import { Order } from "./components/Order"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [orders, setOrders] = useState<string[]>([
+    'Pedido 1',
+    'Pedido 2',
+    'Pedido 3',
+    'Pedido 4',
+  ])
+
+  function createOrder() {
+   setOrders([...orders, 'Pedido 5'])
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div>
+      {orders.map(order => {
+        return <Order text={order}/>
+      })}
+
+      {/* 
+      exemplo button reutilizável <Button text="Add Order"/> */}
+
+      <button onClick={createOrder}
+        style={{
+        backgroundColor: "#000",
+        color: "#f1f1f1",
+        borderRadius: "8px",
+        fontSize: "15px",
+      }}>
+          Add Order
+      </button>
     </div>
   )
 }
