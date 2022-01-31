@@ -30,7 +30,7 @@ function App() {
         borderRadius: "8px",
         fontSize: "15px",
       }}>
-          Add Order
+          Add Pedido
       </button>
     </div>
   )
